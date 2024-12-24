@@ -19,71 +19,89 @@ class HomePage extends StatelessWidget {
         ),
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
+        child: Column(
           children: <Widget>[
             Container(
-              margin: const EdgeInsets.only(top: 0),
-              height: 200,
-              decoration: BoxDecoration(
-                color: Colors.green[400],
-                borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(20)),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.white,
-                      child: Icon(Icons.person,
-                          size: 30, color: Colors.green[400]),
+              height: 20, // Height of the green space to fill the top
+              color: Colors.green[400], // Green color to fill the space
+            ),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  Container(
+                    height: 210, // Height for the DrawerHeader
+                    decoration: BoxDecoration(
+                      color: Colors.green[400],
+                      borderRadius:
+                          BorderRadius.vertical(bottom: Radius.circular(20)),
                     ),
-                    SizedBox(height: 30),
-                    Text(
-                      'User Details',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding: const EdgeInsets.all(
+                          20.0), // Padding inside the header
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 20), // Space before the icon
+                          CircleAvatar(
+                            radius: 30, // Kept the icon size small
+                            backgroundColor: Colors.white,
+                            child: Icon(Icons.person,
+                                size: 30,
+                                color: Colors
+                                    .green[400]), // Kept the icon size small
+                          ),
+                          SizedBox(
+                              height: 20), // Space between the icon and text
+                          Text(
+                            'User Details',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18, // Font size for the title
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 4), // Space between elements
+                          Text(
+                            'Name: John Doe',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14), // Font size for name
+                          ),
+                          Text(
+                            'Email: johndoe@example.com',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14), // Font size for email
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Name: John Doe',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                    Text(
-                      'Email: johndoe@example.com',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-                  ],
-                ),
+                  ),
+                  ListTile(
+                    title: const Text('Settings'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Help'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Log Out'),
+                    onTap: () {
+                      // Handle log out functionality here
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    },
+                  ),
+                ],
               ),
-            ),
-            ListTile(
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Help'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Log Out'),
-              onTap: () {
-                // Handle log out functionality here
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
-              },
             ),
           ],
         ),
